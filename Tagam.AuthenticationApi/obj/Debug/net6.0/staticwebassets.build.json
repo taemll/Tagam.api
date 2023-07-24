@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "KumQDSJv+48ZUWpcT1rG9GXZ3bVez12LxZoT+vsLaik=",
+  "Source": "Tagam.AuthenticationApi",
+  "BasePath": "_content/Tagam.AuthenticationApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

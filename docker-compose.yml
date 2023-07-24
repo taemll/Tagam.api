@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  tagam.favoriteapi:
+    image: ${DOCKER_REGISTRY-}tagamfavoriteapi
+    build:
+      context: .
+      dockerfile: Tagam.FavoriteApi/Dockerfile
+
+  tagam.Image:
+    image: image
+
+    

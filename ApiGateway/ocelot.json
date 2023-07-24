@@ -1,0 +1,121 @@
+{
+  "Routes": [
+    //Auth
+    {
+      "UpstreamPathTemplate": "/api/Account",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authenticationwebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Rating"
+    },
+    //Rating
+    {
+      "UpstreamPathTemplate": "/api/Rating",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ratingwebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Rating"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Rating/{ratingId}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ratingwebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Rating"
+    },
+    //Image
+    {
+      "UpstreamPathTemplate": "/api/Image",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "imagewebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Image"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Rating/{imageId}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "imagewebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Image"
+    },
+    //Favorite
+    {
+      "UpstreamPathTemplate": "/api/Favorite",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "favoritewebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Favorite"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Favorite/{favoriteId}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "favoritewebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Favorite"
+    },
+    //Recipe
+    {
+      "UpstreamPathTemplate": "/api/Recipe",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "recipewebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Recipe"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Recipe/{recipeId}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "recipewebapi",
+          "Potr": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Recipe"
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl" : "http://localhost:800"
+  }
+}
