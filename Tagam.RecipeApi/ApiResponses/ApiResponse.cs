@@ -4,7 +4,8 @@ namespace Tagam.RecipeApi.ApiResponses
 {
     public class ApiResponse
     {
-        const string SUCCESS= "Successfull";
+        const string SUCCESS= "Success";
+        const string ERROR= "Error";
         public int Code { get; set; }
 
         public string Message { get; set; }
@@ -14,7 +15,7 @@ namespace Tagam.RecipeApi.ApiResponses
         public ApiResponse(HttpStatusCode code, object data = null, string message = SUCCESS)
         {
             Code = (int)code;
-            Message = message;
+            Message = ((int)code >= 200 && (int)code <= 200) ? message : ERROR;
             Data = data;
         }
     }

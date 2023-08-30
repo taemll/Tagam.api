@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Tagam.RecipeApi.Models;
 
 namespace Tagam.RecipeApi.Database
@@ -8,7 +10,27 @@ namespace Tagam.RecipeApi.Database
         public DataContext() { }
 
         public DataContext(DbContextOptions<DataContext> options)
-        : base(options) { }
+        : base(options) {
+            try
+            {
+                var databaseCreater = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
+                if (databaseCreater != null)
+                {
+                    if (!databaseCreater.CanConnect())
+                    {
+                        databaseCreater.Create();
+                    }
+                    if (!databaseCreater.HasTables())
+                    {
+                        databaseCreater.CreateTables();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipeSteps> RecipeSteps { get; set; }
@@ -16,11 +38,11 @@ namespace Tagam.RecipeApi.Database
         public DbSet<TypeKitchen> TypesKitchen { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=Yorozuya;Initial Catalog=recipes2.0;Trusted_Connection=True;Encrypt=False");
-            base.OnConfiguring(optionsBuilder);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=mssql;Initial Catalog=recipes;Password=Qwerty23#");
+        //    base.OnConfiguring(optionsBuilder);
+        //}
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

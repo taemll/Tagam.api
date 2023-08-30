@@ -3,14 +3,12 @@ using System.Reflection;
 using Tagam.FavoriteApi.Repositories.Implementation;
 using Tagam.FavoriteApi.Repositories;
 using Tagam.FavoriteApi.Database;
-using JwtAuthenticationManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddJwtAuthentication();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

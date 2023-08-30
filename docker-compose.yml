@@ -1,13 +1,72 @@
 version: '3.4'
+networks:
+  recipeapp:
 
 services:
   tagam.favoriteapi:
-    image: ${DOCKER_REGISTRY-}tagamfavoriteapi
+    image: favorite
     build:
       context: .
       dockerfile: Tagam.FavoriteApi/Dockerfile
+    ports:
+      - 8004:80
+    networks:
+      - recipeapp
 
-  tagam.Image:
+  tagam.imageapi:
     image: image
+    build:
+      context: .
+      dockerfile: Tagam.ImageApi/Dockerfile
+    ports:
+      - 8003:80
+    networks:
+      - recipeapp
 
-    
+  tagam.ratingapi:
+    image: rating
+    build:
+      context: .
+      dockerfile: Tagam.RatingApi/Dockerfile
+    ports:
+      - 8002:80
+    networks:
+      - recipeapp
+
+  tagam.recipeapi:
+    image: recipe
+    build:
+      context: .
+      dockerfile: Tagam.RecipeApi/Dockerfile
+    ports:
+      - 8001:80
+    networks:
+      - recipeapp
+
+
+  tagam.authenticationapi:
+    image: authentication
+    build:
+      context: .
+      dockerfile: Tagam.AuthenticationApi/Dockerfile
+    ports:
+      - 8005:80
+    networks:
+      - recipeapp
+
+  apigateway:
+    image: gateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+
+  mssql:
+    container_name: mssql
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "8008:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Qwerty23#
+    networks:
+      - recipeapp

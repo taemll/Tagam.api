@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Tagam.FavoriteApi.Database;
+using Tagam.FavoriteApi.Models;
 using Tagam.FavoriteApi.Models.Dto;
 
 namespace Tagam.FavoriteApi.Repositories.Implementation
@@ -20,7 +21,7 @@ namespace Tagam.FavoriteApi.Repositories.Implementation
 
         public async Task<FavoriteDto> Create(FavoriteDto favoriteDto)
         {
-            var newFavorite = _mapper.Map<FavoriteDto>(favoriteDto);
+            var newFavorite = _mapper.Map<Favorite>(favoriteDto);
             await _context.AddAsync(newFavorite);
             await _context.SaveChangesAsync();
             return _mapper.Map<FavoriteDto>(newFavorite);
@@ -28,13 +29,13 @@ namespace Tagam.FavoriteApi.Repositories.Implementation
 
         public async Task<IEnumerable<FavoriteDto>> GetFavoritesByClientId(Guid id)
         {
-            var favorites = await _context.Favorites.Where(w=>w.ClientId == id).FirstOrDefaultAsync();
+            var favorites = await _context.Favorites.Where(w=>w.ClientId == id).ToListAsync();
             return _mapper.Map<List<FavoriteDto>>(favorites);
         }
 
         public async Task<IEnumerable<FavoriteDto>> GetFavoritesByRecipeId(Guid id)
         {
-            var favorites = await _context.Favorites.Where(w => w.ClientId == id).FirstOrDefaultAsync();
+            var favorites = await _context.Favorites.Where(w => w.ClientId == id).ToListAsync();
             return _mapper.Map<List<FavoriteDto>>(favorites);
         }
 

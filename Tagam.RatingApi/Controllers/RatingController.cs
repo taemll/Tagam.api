@@ -7,7 +7,6 @@ using Tagam.RatingApi.Repositories;
 
 namespace Tagam.RatingApi.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class RatingController : Controller

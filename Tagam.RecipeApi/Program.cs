@@ -6,7 +6,6 @@ using Tagam.RecipeApi.Repositories;
 using Tagam.RecipeApi.Database;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -24,6 +23,8 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
@@ -34,6 +35,15 @@ builder.Services.AddScoped<IRecipeStepRepository, RecipeStepRepository>();
 builder.Services.AddScoped<ITypeKitchenRepository, TypeKitchenRepository>();
 
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
 
@@ -47,6 +57,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseCors();
 
 app.MapControllers();
 

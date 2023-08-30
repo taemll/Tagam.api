@@ -13,7 +13,7 @@ namespace Tagam.RecipeApi.Controllers
     {
         private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryController(ICategoryRepository categoryRepository, ILogger<CategoryController> logger)
+        public CategoryController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository ?? throw new ArgumentNullException(nameof(categoryRepository));
         }

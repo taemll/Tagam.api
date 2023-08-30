@@ -23,11 +23,6 @@ namespace Tagam.RecipeApi.Repositories.Implementation
 
         public async Task<IngredientRecipeResponse> CreateIngredient(IngredientRecipeDto ingredient)
         {
-            //при создании реципиингредиент он ищет в бд таблицы ингредиент по названию,
-            //если ингредиент по названию не найден, то сохраняется в таблице ингредиент и передает ид
-
-            //безем апи, из ингредиентов который будет искать по названию
-            //var url = "http"
             _logger.LogInformation(nameof(CreateIngredient));
 
             var domainIngredient = _mapper.Map<IngredientRecipe>(ingredient);
@@ -83,7 +78,7 @@ namespace Tagam.RecipeApi.Repositories.Implementation
             {
                 ingredirent.Ingredient = _context.Ingredients.Where(x => ingredientRecipe.Select(s => s.IngredientId).Contains(x.Id)).FirstOrDefault();
             }
-            return _mapper.Map<IEnumerable<IngredientRecipeResponse>>(ingredientRecipe);    
+            return _mapper.Map<IEnumerable<IngredientRecipeResponse>>(ingredientRecipe);
         }
 
         public async Task<IEnumerable<IngredientRecipeResponse>> GetIngredientsByIngredientId(int id)

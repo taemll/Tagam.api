@@ -9,6 +9,7 @@ namespace Tagam.RecipeApi.Models
 
         [Required]
         public string? Name { get; set; } = null!;
+        public string ImgLink { get; set; }
         public virtual ICollection<Recipe> Recipes { get; set; }
         public Category()
         {

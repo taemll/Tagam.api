@@ -20,6 +20,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
+builder.Services.AddSingleton<ILoggerFactory, LoggerFactory>();
 
 
 var app = builder.Build();

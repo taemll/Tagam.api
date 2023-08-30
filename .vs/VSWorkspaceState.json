@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Tagam.AuthenticationApi",
+    "\\Tagam.AuthenticationApi\\Controllers",
+    "\\Tagam.RecipeApi",
+    "\\Tagam.RecipeApi\\ApiResponses",
+    "\\Tagam.RecipeApi\\Repositories",
+    "\\Tagam.RecipeApi\\Repositories\\Implementation"
   ],
-  "SelectedNode": "\\Tagam.sln",
+  "SelectedNode": "\\Tagam.RecipeApi\\Repositories\\Implementation\\TypeKitchenRepository.cs",
   "PreviewInSolutionExplorer": false
 }

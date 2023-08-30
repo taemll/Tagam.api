@@ -10,6 +10,9 @@ namespace Tagam.RecipeApi.AutoMapper.Profiles
         {
             CreateMap<Category, CategoryDto>()
                 .ReverseMap();
+            
+            CreateMap<object, CategoryDto>()
+                .ReverseMap();
         }
     }
 }

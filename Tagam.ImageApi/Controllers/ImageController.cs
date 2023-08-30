@@ -10,12 +10,10 @@ namespace Tagam.ImageApi.Controllers
     public class ImageController : Controller
     {
         private readonly IImageRepository _imageRepository;
-        private readonly ILogger _logger;
 
-        public ImageController(IImageRepository imageRepository, ILogger logger)
+        public ImageController(IImageRepository imageRepository)
         {
             _imageRepository = imageRepository ?? throw new ArgumentNullException(nameof(imageRepository));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         [HttpPost("create")]

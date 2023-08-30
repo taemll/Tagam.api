@@ -16,5 +16,6 @@ namespace Tagam.RecipeApi.Repositories
         Task<string> Delete(Guid id);
         //метод который показывает рецепты по лайкам
         Task<IEnumerable<RecipeResponseDto>> GetFavoriteRecipes(int id);
+        Task<IEnumerable<RecipeResponseDto>> GetTopRecipes();
     }
 }

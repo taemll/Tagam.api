@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>35c13324-83e1-4ccf-a0d2-aefac4b1d710</ProjectGuid>
+    <ProjectGuid>0a4f9baa-4848-4023-8391-5d133f21e059</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>tagam.favoriteapi</DockerServiceName>

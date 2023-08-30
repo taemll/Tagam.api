@@ -83,6 +83,7 @@ namespace Tagam.RecipeApi.Controllers
             return new ApiResponse(HttpStatusCode.OK, newrecipe);
         }
 
+        [HttpGet("get-favorites")]
         public async Task<object> GetFavoriteRecipes(int id)
         {
             var favorites = await _recipeRepository.GetFavoriteRecipes(id);
@@ -121,6 +122,13 @@ namespace Tagam.RecipeApi.Controllers
         public async Task<object> DeleteStep(int id)
         {
             await _stepsRepository.Delete(id);
+            return new ApiResponse(HttpStatusCode.OK);
+        }
+
+        [HttpGet("top")]
+        public async Task<object> GetTopRecipes()
+        {
+            await _recipeRepository.GetTopRecipes();
             return new ApiResponse(HttpStatusCode.OK);
         }
     }

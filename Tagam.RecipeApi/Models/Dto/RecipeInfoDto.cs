@@ -10,7 +10,6 @@ namespace Tagam.RecipeApi.Models.Dto
         //public Guid ClientId { get; set; }
         public virtual CategoryDto? Category { get; set; }
         public virtual TypeKitchenDto? TypeKitchen { get; set; }
-        //public double Rating { get; set; }
         public int ImageId { get; set; }
         public DateTime CreatedDate { get; set; }
         public TimeForPreparing TimeForPreparing { get; set; }

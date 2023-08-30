@@ -166,7 +166,6 @@ namespace Tagam.RecipeApi.Repositories.Implementation
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsAsync<IEnumerable<FavoritResponseDto>>();
-                //var recipes = await _context.Recipes.Where(w=>w.Id == result.RecipeId).ToListAsync();
                 var recipes = await _context.Recipes.Where(w => result.Select(s=>s.ClientId).Contains(w.Id)).ToListAsync();
                 return _mapper.Map<List<RecipeResponseDto>>(recipes);
             }
@@ -190,12 +189,10 @@ namespace Tagam.RecipeApi.Repositories.Implementation
         } */
 
 
-        /*public async Task<IEnumerable<RecipeResponseDto>> GetTopRecipes()
+        public async Task<IEnumerable<RecipeResponseDto>> GetTopRecipes()
         {
-            //вывод топ рецептов 
-            // получить список рецептов с рейтингами 
-            //нужно получить список рейтинга топ 5 
-            var recipes = await _context.Recipes.Where()
-        }*/
+            var recipes = await _context.Recipes.OrderByDescending(u => u.Id).Take(5).ToListAsync();
+            return _mapper.Map<List<RecipeResponseDto>>(recipes);
+        }
     }
 }

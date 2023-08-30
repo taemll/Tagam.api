@@ -1,0 +1,22 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "authorization": "StartDebugging",
+        "favorite": "StartDebugging",
+        "image": "StartDebugging",
+        "rating": "StartDebugging",
+        "recipe": "StartDebugging",
+        "tagam.favoriteapi": "StartDebugging",
+        "tagam.imageapi": "StartDebugging",
+        "tagam.ratingapi": "StartDebugging",
+        "tagam.recipeapi": "StartDebugging",
+        "tagam.authenticationapi": "StartDebugging",
+        "apigateway": "StartDebugging",
+        "mssql": "StartDebugging"
+      }
+    }
+  }
+}

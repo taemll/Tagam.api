@@ -7,7 +7,7 @@ namespace Tagam.RecipeApi.Models.Dto
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        //public Guid ClientId { get; set; }
+        public Guid ClientId { get; set; }
         public int TypeKitchenId { get; set; }
         public int CategoryId { get; set; }
         //public double Rating { get; set; }
